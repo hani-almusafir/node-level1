@@ -8,11 +8,16 @@ app.get("/", (req, res) => {
   res.sendFile("./views/home.html", { root: __dirname });
 });
 
-app.listen(port, () => {
-  console.log(`http://localhost:${port}/`);
-});
-
 mongoose
-  .connect("mongodb://127.0.0.1:27017/test")
-  .then(() => {})
-  .catch((err) => {});
+  .connect(
+    "mongodb+srv://khyranhany:yhIiRZBi4t7o55NK@cluster0.3u7bryt.mongodb.net/?appName=Cluster0"
+  )
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`http://localhost:${port}/`);
+    });
+  })
+  .catch((err) => {
+    console.log(err)
+  });
+// mongoose
